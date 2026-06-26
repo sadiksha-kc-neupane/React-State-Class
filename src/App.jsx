@@ -4,11 +4,13 @@ import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import "./App.css";
 import Counter from "./Counter";
+import LikeButton from "./likeButton";
 
 function App() {
   return (
     <div>
-      <Counter />
+      <h3>States in React</h3>
+      <LikeButton />
     </div>
   );
 }
