@@ -11,6 +11,7 @@ function App() {
     <div>
       <h3>States in React</h3>
       <LikeButton />
+      <Counter />
     </div>
   );
 }
