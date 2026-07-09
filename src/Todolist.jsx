@@ -6,13 +6,44 @@ export default function TodoList() {
   let [newTodo , setNewTodo] = useState("");
 
 
-  let addNewTask = ()=>{
-      setTodos((prevTodos)=>{[...prevTodos, {id: uuidv4(), task: newTodo}]});
-  }
+  // let addNewTask = ()=>{
+  //   const task = newTodo.trim();
+
+  //   if (!task) return;
+
+  //   setTodos((prevTodos)=>
+  //     return ([...prevTodos, { id: uuidv4(), task={newTodo} }]
+  //   ));
+  //   setNewTodo("");
+  // }
+
+  let addNewTask = () => {
+  const task = newTodo.trim();
+
+  if (!task) return;
+
+  setTodos((prevTodos) => {
+    return [
+      ...prevTodos,
+      {
+        id: uuidv4(),
+        task: task,
+      },
+    ];
+  });
+
+  setNewTodo("");
+};
 
   let updateTodoValue =(event)=>{
     setNewTodo(event.target.value);
   }
+
+
+  let deleteTodo = (id) => {
+    setTodos((prevTodos)=>todos.filter((prevTodos)=> prevTodos.id != id));
+  };
+
   return(
     <div>
      <input  placeholder="add a task" value={newTodo} onChange={updateTodoValue}></input>
@@ -27,8 +58,8 @@ export default function TodoList() {
       {todos.map((todo)=>(
         <li key={todo.id}>
           <span>{todo.task}</span>
-          <br></br>
-          <button>DELETE</button>
+          &nbsp; &nbsp; &nbsp;
+          <button onClick={()=>{deleteTodo(todo.id)}}>DELETE</button>
         </li>
       ))}
      </ul>
